@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Découvrez Fadelogidal, le panda roux parrainé au zoo de Cerza. Photos, histoires et liens vers mon compte Instagram.">
+    <meta name="keywords" content="Fadelogidal, panda roux, zoo Cerza, parrainage, Instagram, Fadelogidal Cerza, Fadelogidal panda">
+    <title>Fadelogidal - Mon Panda Roux au Zoo de Cerza</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #ff6f61;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+        }
+        main {
+            padding: 2rem;
+        }
+        .slider {
+            width: 90%;
+            margin: 2rem auto;
+            overflow: hidden;
+            position: relative;
+        }
+        .slider .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            width: calc(100% * 5);
+        }
+        .slider .slides img {
+            width: calc(100% / 3);
+            flex-shrink: 0;
+            border-radius: 8px;
+        }
+        .slider-buttons {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+        .slider-buttons button {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 1rem;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+        .slider-buttons button:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .video-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .video-row {
+            display: flex;
+            gap: 1rem; /* Espace entre les vidéos */
+        }
+        .video-row iframe {
+            flex: 1 1 auto; /* Ajuste les dimensions automatiquement */
+            max-width: 33%; /* Limite la largeur d'une vidéo */
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Fadelogidal : Mon Panda Roux au Zoo de Cerza</h1>
+        <p>Un regard sur la vie de Fadelogidal, le panda roux que je parraine</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>À propos de Fadelogidal</h2>
+            <p>Fadelogidal est un adorable panda roux vivant au zoo de Cerza. Grâce au parrainage, je contribue à sa nourriture et à son bien-être. Ce site est dédié à partager des photos, des moments et des anecdotes sur sa vie quotidienne.</p>
+            <p>Pour en savoir plus sur le zoo de Cerza et son programme de parrainage, visitez leur site officiel :
+                <a href="https://www.cerza.com" target="_blank">Zoo de Cerza</a> et la page de <a href="https://www.cerza.com/parrainage" target="_blank">parrainage</a>.</p>
+        </section>
+
+        <section>
+            <h2>Galerie photo défilante</h2>
+            <div class="slider">
+                <div class="slides">
+                    <img src="photo1.jpg" alt="Fadelogidal mangeant du bambou">
+                    <img src="photo2.jpg" alt="Fadelogidal se reposant dans un arbre">
+                    <img src="photo3.jpg" alt="Fadelogidal explorant son enclos">
+                    <img src="photo4.jpg" alt="Fadelogidal jouant avec des feuilles">
+                    <img src="photo5.jpg" alt="Fadelogidal regardant curieusement">
+                </div>
+                <div class="slider-buttons">
+                    <button id="prev">&#8249;</button>
+                    <button id="next">&#8250;</button>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Vidéos de Fadelogidal</h2>
+            <div class="video-container">
+                <div class="video-row">
+                    <iframe src="https://www.youtube.com/embed/Ih6psXeBR1A" title="Mon Panda Roux Fadelogidal mangeant du bambou" frameborder="0" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/TEVPa4buKBA" title="Mon Panda Roux Fadelogidal qui marche" frameborder="0" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/llt5prTBkzQ" title="Mon Panda Roux Fadelogidal qui mange" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const slides = document.querySelector('.slides');
+        const slideImages = document.querySelectorAll('.slides img');
+        const prevButton = document.getElementById('prev');
+        const nextButton = document.getElementById('next');
+        const visibleImages = 3;
+        let currentIndex = 0;
+
+        function updateSliderPosition() {
+            slides.style.transform = `translateX(-${currentIndex * (100 / visibleImages)}%)`;
+        }
+
+        prevButton.addEventListener('click', () => {
+            currentIndex = (currentIndex > 0) ? currentIndex - 1 : slideImages.length - visibleImages;
+            updateSliderPosition();
+        });
+
+        nextButton.addEventListener('click', () => {
+            currentIndex = (currentIndex < slideImages.length - visibleImages) ? currentIndex + 1 : 0;
+            updateSliderPosition();
+        });
+    </script>
+
+    <footer>
+        <p>&copy; 2024 Fadelogidal - Tous droits réservés</p>
+    </footer>
+</body>
+</html>
